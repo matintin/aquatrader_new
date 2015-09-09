@@ -16,24 +16,28 @@ Route::get('/', function () {
     return view('welcome');
 
 });
-
 Route::get('about', function () {
 
     return view('about');
 
 });
 
-
 Route::get('contact', function () {
 
     return view('contact');
 
 });
-Route::get('types', function () {
+Route::get('types/{id}', function ($id) {
 
-	$type = \App\Models\Type::find(2);
+	$type = \App\Models\Type::find($id);
 
     return view('types',['type'=>$type]);
     
+
+});
+
+Route::get('products/create', function () {
+
+    return view('createProduct');
 
 });

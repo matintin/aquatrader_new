@@ -41,3 +41,27 @@ Route::get('products/create', function () {
     return view('createProduct');
 
 });
+
+Route::post('products', function (\App\Http\Requests\CreateProductRequest $request) {
+
+    $product = \App\Models\Product::create($request->all());
+
+    return redirect('types/'.$product->type->id);
+
+});
+
+Route::get('products/{id}/edit', function ($id) {
+
+	$product = \App\Models\Product::find($id);
+
+    return view('editProduct',['product'=>$product]);
+
+});
+
+Route::put('products/{id}', function ($id) {
+
+	$product = \App\Models\Product::find($id);
+
+    
+
+});

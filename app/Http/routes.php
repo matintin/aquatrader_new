@@ -58,9 +58,15 @@ Route::get('products/{id}/edit', function ($id) {
 
 });
 
-Route::put('products/{id}', function ($id) {
+Route::put('products/{id}', function ($id,\App\Http\Requests\UpdateProductRequest $request) {
 
 	$product = \App\Models\Product::find($id);
+
+    $product->fill($request->all());
+
+    $product->save();
+
+    return redirect("types/".$product->type->id);
 
     
 

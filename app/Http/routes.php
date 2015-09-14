@@ -46,6 +46,14 @@ Route::post('products', function (\App\Http\Requests\CreateProductRequest $reque
 
     $product = \App\Models\Product::create($request->all());
 
+    //move file for tempt location to productphotos
+    $fileName = \Carbon\Carbon::now()->timestamp."_product.jpg";
+
+    $request->file('photo')->move('productphotos', $fileName);
+
+    $product->photo = $fileName;
+    $product->save();
+
     return redirect('types/'.$product->type->id);
 
 });
@@ -67,6 +75,55 @@ Route::put('products/{id}', function ($id,\App\Http\Requests\UpdateProductReques
     $product->save();
 
     return redirect("types/".$product->type->id);
+
+    
+
+});
+
+Route::get('users/create', function () {
+
+    return view('createUser');
+
+});
+
+Route::get('users/{id}', function ($id) {
+
+    $user = \App\Models\User::find($id);
+
+    return view('users',['user'=>$user]);
+    
+
+});
+
+Route::post('users', function (\App\Http\Requests\CreateUserRequest $request) {
+
+    $user = \App\Models\User::create($request->all());
+
+    //encrypt password
+    $user->password = bcrypt($user->password);
+    $user->save();
+
+    return redirect('users/'.$user->id);
+
+});
+
+Route::get('users/{id}/edit', function ($id) {
+
+    $user = \App\Models\User::find($id);
+
+    return view('editUser',['user'=>$user]);
+
+});
+
+Route::put('users/{id}', function ($id,\App\Http\Requests\UpdateUserRequest $request) {
+
+    $user = \App\Models\User::find($id);
+
+    $user->fill($request->all());
+
+    $user->save();
+
+    return redirect("users/".$user->id);
 
     
 

@@ -1,3 +1,4 @@
+@if(Request::ajax() == false)
 <!DOCTYPE html>
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
 <!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
@@ -33,6 +34,7 @@
 	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
 	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
 </head>
 <body>
@@ -77,16 +79,19 @@
 			</nav>
 		</header>
 		<div class="main group">
-
+@endif
 		@yield('content')
-
+@if(Request::ajax() == false)
 		</div>
 		<footer></footer>
 
 	</div><!-- container -->
+	<script src="{{asset('js/main.js')}}"></script>
+	<script src="{{asset('js/spin.js')}}"></script>
 
 
 <!-- End Document
 ================================================== -->
 </body>
 </html>
+@endif

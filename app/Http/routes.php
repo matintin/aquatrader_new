@@ -26,6 +26,8 @@ Route::post('login',"LoginController@processLogin");
 Route::get('logout',"LoginController@logout");
 
 Route::get('cart',"CartController@showCart");
+Route::post('cartitems',"CartController@addItem");
+Route::post('orders',"CartController@checkout");
 
 //resource route mapping (based on Rest convention)
 Route::resource('products', 'ProductsController');

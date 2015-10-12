@@ -146,7 +146,19 @@ img{
 	border-bottom: thin dotted rgb(200,200,200);
 
 }
-
+.pagination {
+	width: 100%;
+	display: flex;
+	flex-wrap:wrap;
+}
+.pagination li {
+	flex:1 0 10%;
+	text-align: center;
+}
+.pagination li a {
+	padding: 0;
+	margin: 0;
+}
 
 
 

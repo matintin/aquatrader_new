@@ -66,6 +66,9 @@ class ProductsController extends Controller
     public function show($id)
     {
         //
+         $product = \App\Models\Product::find($id);
+         return view("product",["product"=>$product]);
+
     }
 
     /**
@@ -114,5 +117,10 @@ class ProductsController extends Controller
     public function destroy($id)
     {
         //
+        $product = \App\Models\Product::find($id);
+
+        $product->delete();
+
+        return redirect("types/".$product->type->id);
     }
 }

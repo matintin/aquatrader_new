@@ -85,9 +85,13 @@
 		</div>
 		<footer></footer>
 
+		<div id="token">{{ csrf_token() }}</div>
+
 	</div><!-- container -->
-	<script src="{{asset('js/main.js')}}"></script>
 	<script src="{{asset('js/spin.js')}}"></script>
+	<script src="{{asset('js/history/html5/jquery.history.js')}}"></script>
+	<script src="{{asset('js/jquery.jeditable.js')}}"></script>
+	<script src="{{asset('js/main.js')}}"></script>
 
 
 <!-- End Document

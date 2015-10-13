@@ -58,6 +58,9 @@ img{
 	border-radius: 0.25em;
 
 }
+#token {
+	display: none;
+}
 
 .logo{
 	white-space:nowrap;

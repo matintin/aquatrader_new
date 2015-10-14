@@ -36,6 +36,7 @@
 	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
+
 </head>
 <body>
 
@@ -91,6 +92,7 @@
 	<script src="{{asset('js/spin.js')}}"></script>
 	<script src="{{asset('js/history/html5/jquery.history.js')}}"></script>
 	<script src="{{asset('js/jquery.jeditable.js')}}"></script>
+	<script src="//tinymce.cachefly.net/4.2/tinymce.min.js"></script>
 	<script src="{{asset('js/main.js')}}"></script>
 
 

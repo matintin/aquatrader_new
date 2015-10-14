@@ -40,27 +40,39 @@ $(function(){
 
 	// $('.main.group').on('click','.pagination a',contentLoad);
 
-	$("[data-field]").on("click",function() {
+	$("[data-field]").each(function(i,e) {
 
 		var url = window.location.href;
 		var options = {
 			type:"textarea",
+			cssclass:"editable",
 			submitdata:{
 				_method:"PUT",
 				_token:$("#token").text(),
-				field: $(this).attr("data-field")
+				field:$(e).attr("data-field")
 			},
 			submit:"OK"
 
 		};
 
-		$(this).editable(url,options);
+		$(e).editable(url,options);
 
 
 	});
 
+//wysiwyg
 
+	$(document).on("DOMNodeInserted",function(e) {
 
+		if($(e.target).hasClass("editable")){
+
+			tinymce.editors=[];
+
+			tinymce.init({selector:'.editable textarea'});
+			
+		}
+
+	});
 
 
 
